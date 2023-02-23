@@ -1,0 +1,58 @@
+{
+  "name": "guide-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "guide-cli": "dist/index.js"
+  },
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "dev": "rollup -w --config ./build/rollup.dev.js --bundleConfigAsCjs",
+    "build": "rollup --config ./build/rollup.dev.js --bundleConfigAsCjs",
+    "eslint": "eslint src --ext .ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.21.0",
+    "@rollup/plugin-alias": "^4.0.3",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-eslint": "^9.0.3",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/colors": "^1.2.1",
+    "@types/import-local": "^3.1.0",
+    "@types/node": "^18.13.0",
+    "@types/npmlog": "^4.1.4",
+    "@types/root-check": "^1.0.0",
+    "@types/semver": "^7.3.13",
+    "@types/user-home": "^2.0.0",
+    "eslint": "^8.34.0",
+    "eslint-plugin-guide": "^0.0.3",
+    "rollup": "^3.17.2",
+    "rollup-plugin-cleandir": "^2.0.0",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "commander": "^10.0.0",
+    "import-local": "^3.1.0",
+    "npmlog": "^7.0.1",
+    "path-exists": "^5.0.0",
+    "root-check": "^2.0.0",
+    "semver": "^7.3.8",
+    "user-home": "^3.0.0"
+  }
+}
