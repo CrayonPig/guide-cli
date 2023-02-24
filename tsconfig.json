@@ -26,7 +26,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/*.ts", "src/core/index.mts", "src/core/index.mts",
+    "src/*.ts"
   ],
   "exclude": ["node_modules"]
 }

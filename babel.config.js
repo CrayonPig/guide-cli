@@ -5,20 +5,12 @@ module.exports = {
       '@babel/preset-env', {
         // 设置兼容目标浏览器版本,这里可以不写,babel-loader会自动寻找上面配置好的文件.browserslistrc
         targets: {
-          node: 'current'
+          node: '12.0.0'
         }
       }
     ],
     [
       '@babel/preset-typescript'
-    ]
-  ],
-  plugins: [
-    [
-      '@babel/plugin-proposal-class-properties',
-      {
-        loose: true
-      }
     ]
   ]
 };
