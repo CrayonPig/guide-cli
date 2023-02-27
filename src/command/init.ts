@@ -14,7 +14,7 @@ async function initProjectTemplate() {
     type: 'list',
     name: 'templateUrl',
     message: '请选择项目模板',
-    choices: templateList.map((item: any) => ({
+    choices: templateList.map((item: ITemplateItem) => ({
       value: item.url,
       name: `${item.name}(${item.description})`
     }))

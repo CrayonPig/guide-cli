@@ -1,4 +1,4 @@
-export default [
+const list: Array<ITemplateItem> = [
   {
     name: 'webpack5-react-ts-template',
     description: 'webpack5 + react18 + ts模板',
@@ -12,3 +12,4 @@ export default [
     url: 'https://github.com/CrayonPig/webpack5-vue3-ts-template.git'
   }
 ];
+export default list;

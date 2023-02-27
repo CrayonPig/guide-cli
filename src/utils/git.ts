@@ -10,7 +10,7 @@ function checkGit() {
   }
 }
 
-export function gitClone(url: string) {
+function gitClone(url: string) {
   // git clone
   checkGit();
   const res = shell.exec(`git clone ${url} ./`, {
@@ -25,6 +25,11 @@ export function gitClone(url: string) {
   shell.exit(1);
 }
 
-export function gitCommit() {
+function gitCommit() {
 //
 }
+
+export {
+  gitClone,
+  gitCommit
+};

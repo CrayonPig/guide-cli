@@ -3,7 +3,7 @@ import importLocal from 'import-local';
 import log from '@/utils/log';
 import core from '@/core/index';
 
-log.info('欢迎使用Guide-cli，欢迎提PR', '');
+log.info('欢迎使用Guide-cli', '');
 
 if (importLocal(__filename)) {
   // 加载依赖
