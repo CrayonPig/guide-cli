@@ -5,7 +5,7 @@ import pathExists from 'path-exists';
 import log from '../utils/log';
 import { LOWEST_NODE_VERSION, NPM_PKG_NAME, PKG_VERSION } from '@/utils/const';
 import { getNpmSemverVersion } from '@/utils/npm-info';
-import registerCommand from './command';
+import registerCommand from './registerCommand';
 
 async function checkGlobalUpdate() {
   // 检查是否需要全局更新

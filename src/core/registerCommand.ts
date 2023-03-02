@@ -2,7 +2,7 @@ import { Command } from 'commander';
 import colors from 'colors';
 import { PKG_NAME, PKG_VERSION } from '@/utils/const';
 import log from '@/utils/log';
-import initExec from '@/command/init';
+import exec from './exec';
 
 const program = new Command();
 
@@ -12,13 +12,12 @@ function registerCommand() {
     .usage('<command> [options]')
     .version(PKG_VERSION, '-V, --version', '版本信息')
     .option('-d, --debug', '是否开启调试模式', false)
-    .option('-tp, --targetPath <targetPath>', '是否制定本地调试文件路径', '')
     .allowUnknownOption();
 
   program
-    .command('init [projectName]')
-    .option('-f, --force', '是否强制初始化项目')
-    .action(initExec);
+    .command('init [gitPath]')
+    .option('-f, --force', '是否强制初始化项目', false)
+    .action(exec);
 
   // 开启debug模式
   program.on('option:debug', () => {
@@ -29,12 +28,6 @@ function registerCommand() {
       process.env.LOG_LEVEL = 'info';
     }
     log.level = process.env.LOG_LEVEL;
-  });
-
-  // 指定targetPath
-  program.on('option:targetPath', () => {
-    process.env.CLI_TARGET_PATH = program.opts()?.targetPath as string;
-    log.info('targetPath已指定为', process.env.CLI_TARGET_PATH);
   });
 
   // 未知命令监听
