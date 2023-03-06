@@ -1,8 +1,9 @@
 import inquirer from 'inquirer';
 import fse from 'fs-extra';
+import colors from 'colors';
 import Command from '@/utils/command';
 import log from '@/utils/log';
-import { gitClone } from '@/utils/git';
+import Git from '@/utils/git';
 import templateList from '@/utils/template';
 import { isDirEmpty } from '@/utils/index';
 
@@ -22,11 +23,9 @@ export class InitCommand extends Command {
 
   async exec() {
     // 1、检查本地路径
-    const nextFlag = await this.checkLocalDir();
-    if (nextFlag) {
-      // 2、根据模板或路径下载代码
-      await this.initTemplate();
-    }
+    await this.checkLocalDir();
+    // 2、根据模板或路径下载代码
+    await this.initTemplate();
   }
 
   async checkLocalDir() {
@@ -35,7 +34,7 @@ export class InitCommand extends Command {
     log.info('exec', JSON.stringify(this.initOpt.force));
     if (!isDirEmpty(localPath)) {
       if (!this.initOpt.force) {
-      // 询问是否继续创建
+        // 询问是否继续创建
         ifContinue = (await inquirer.prompt({
           type: 'confirm',
           name: 'ifContinue',
@@ -43,7 +42,7 @@ export class InitCommand extends Command {
           message: '当前文件夹不为空，是否继续创建项目？'
         })).ifContinue;
         if (!ifContinue) {
-          return false;
+          throw new Error(colors.red('用户手动取消'));
         }
       }
       // 2. 是否启动强制更新
@@ -60,7 +59,7 @@ export class InitCommand extends Command {
           fse.emptyDirSync(localPath);
           return true;
         }
-        return false;
+        throw new Error(colors.red('需使用空白目录'));
       }
     }
     log.verbose('localPath', localPath);
@@ -75,7 +74,7 @@ export class InitCommand extends Command {
     } else if (this.gitPath.endsWith('.git') || this.gitPath.startsWith('git@')) {
       // .git 结尾或者git@开头，视为直接从git克隆
       log.verbose('直接从git克隆', '');
-      gitClone(this.gitPath);
+      new Git().gitClone(this.gitPath);
     } else {
       log.error('git地址错误', `${this.gitPath}不是有效的git地址`);
     }
@@ -92,7 +91,7 @@ export class InitCommand extends Command {
         name: `${item.name}(${item.description})`
       }))
     });
-    gitClone(templateUrl);
+    new Git().gitClone(templateUrl);
   }
 }
 

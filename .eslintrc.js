@@ -17,6 +17,8 @@ module.exports = {
     'import/extensions': ['error', 'never', {
       json: 'always'
     }],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }]
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'class-methods-use-this': 1
+
   }
 };

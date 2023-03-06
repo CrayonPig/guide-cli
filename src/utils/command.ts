@@ -5,8 +5,6 @@ class Command {
 
   cmd: { [key: string]: unknown } = {};
 
-  runner: Promise<unknown>;
-
   constructor(argv: Array<unknown>) {
     if (!argv) {
       throw new Error('参数不能为空！');
@@ -18,18 +16,14 @@ class Command {
       throw new Error('参数列表为空！');
     }
     this.argv = argv;
-    const runner = new Promise((resolve, reject) => {
-      let chain = Promise.resolve();
-      chain = chain.then(() => this.initArgs());
-      chain = chain.then(() => this.init());
-      chain = chain.then(() => this.exec());
-      chain = chain.then(resolve);
-      chain.catch((err) => {
-        log.error('Command constructor ', err.message);
-        reject(err);
-      });
+
+    let chain = Promise.resolve();
+    chain = chain.then(() => this.initArgs());
+    chain = chain.then(() => this.init());
+    chain = chain.then(() => this.exec());
+    chain.catch((err) => {
+      log.error((err as Error).message, '');
     });
-    this.runner = runner;
   }
 
   initArgs() {

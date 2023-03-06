@@ -54,10 +54,12 @@
     "import-local": "^3.1.0",
     "inquirer": "^8.2.0",
     "npmlog": "^7.0.1",
+    "ora": "^6.1.2",
     "path-exists": "^4.0.0",
     "root-check": "^2.0.0",
     "semver": "^7.3.8",
     "shelljs": "^0.8.5",
+    "simple-git": "^3.17.0",
     "url-join": "^4.0.1",
     "user-home": "^3.0.0"
   }

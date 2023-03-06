@@ -19,6 +19,10 @@ function registerCommand() {
     .option('-f, --force', '是否强制初始化项目', false)
     .action(exec);
 
+  program
+    .command('push')
+    .action(exec);
+
   // 开启debug模式
   program.on('option:debug', () => {
     if (program.opts().debug) {

@@ -1,4 +1,5 @@
-import { init } from '@/command/init';
+import { init } from '@/commands/init';
+import { push } from '@/commands/push';
 import log from '@/utils/log';
 
 function exec(...argv: Array<unknown>) {
@@ -20,6 +21,8 @@ function exec(...argv: Array<unknown>) {
 
   if (cmdName === 'init') {
     init(args);
+  } else if (cmdName === 'push') {
+    push(args);
   }
 }
 
